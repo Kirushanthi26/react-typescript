@@ -1,6 +1,12 @@
 import { Button } from "./components/Button";
 import { Input } from "./components/Input";
 import { Container } from "./components/Container";
+import { Card } from "./components/Card";
+import { IconButton } from "./components/IconButton";
+
+function HeartIcon() {
+  return <span>❤️</span>;
+}
 
 export const App = () => {
   return (
@@ -16,6 +22,24 @@ export const App = () => {
       <Container as="button" onClick={() => alert("Clicked!")}>
         Click me secound
       </Container>
+
+      <Card
+        title="My Card"
+        actions={
+          <button onClick={() => console.log("Button clicked!")}>
+            Click Me!
+          </button>
+        }
+      >
+        <p>Some content</p>
+      </Card>
+
+      <IconButton
+        icon={HeartIcon}
+        onClick={() => console.log("Button clicked!")}
+      >
+        Like
+      </IconButton>
     </main>
   );
 };
