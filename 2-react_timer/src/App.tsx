@@ -1,5 +1,6 @@
 import { Button } from "./components/Button";
 import { Input } from "./components/Input";
+import { Container } from "./components/Container";
 
 export const App = () => {
   return (
@@ -11,6 +12,10 @@ export const App = () => {
       <Button el="a" href="/">
         Click me
       </Button>
+
+      <Container as="button" onClick={() => alert("Clicked!")}>
+        Click me secound
+      </Container>
     </main>
   );
 };
