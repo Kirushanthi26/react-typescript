@@ -32,8 +32,6 @@ export const App = () => {
       </Header>
 
       <NewGoalForm onAddGoal={handleAddGoal} />
-      <button onClick={handleAddGoal}>Add Goal</button>
-
       <CourseGoalList goals={goals} onDeleteGoal={handleDeleteGoal} />
     </main>
   );

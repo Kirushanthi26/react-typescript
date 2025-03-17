@@ -1,10 +1,25 @@
+import { useRef, type FormEvent } from "react";
+
 type NewGoalFormProps = {
   onAddGoal: (title: string, description: string) => void;
 };
 
 export const NewGoalForm = ({ onAddGoal }: NewGoalFormProps) => {
-  const handleCreateNewGoal = () => {
-    onAddGoal("test the title by kiru ", "test the description by kiru ");
+  const goal = useRef<HTMLInputElement>(null);
+  const summary = useRef<HTMLTextAreaElement>(null);
+
+  const handleCreateNewGoal = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (!goal.current?.value || !summary.current?.value) return;
+
+    const title = goal.current.value;
+    const description = summary.current.value;
+
+    onAddGoal(title, description);
+
+    goal.current!.value = "";
+    summary.current!.value = "";
   };
 
   return (
@@ -12,10 +27,12 @@ export const NewGoalForm = ({ onAddGoal }: NewGoalFormProps) => {
       <input
         type="text"
         placeholder="Title"
+        ref={goal}
         className="text-inherit w-full p-2 bg-[#b4b6c4] border-none rounded-sm shadow-lg placeholder:text-[#dfd9be] placeholder:font-semibold placeholder:uppercase"
       />
       <textarea
         placeholder="Description"
+        ref={summary}
         className="text-inherit w-full p-2 bg-[#b4b6c4] border-none rounded-sm shadow-lg placeholder:text-[#dfd9be] placeholder:font-semibold placeholder:uppercase"
       ></textarea>
       <button
