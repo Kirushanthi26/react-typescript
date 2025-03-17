@@ -20,6 +20,7 @@ export const NewGoalForm = ({ onAddGoal }: NewGoalFormProps) => {
 
     goal.current!.value = "";
     summary.current!.value = "";
+    //e.currentTarget.reset(); altranative to reset the form
   };
 
   return (
