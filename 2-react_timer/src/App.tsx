@@ -4,6 +4,7 @@ import { Container } from "./components/Container";
 import { Card } from "./components/Card";
 import { IconButton } from "./components/IconButton";
 import { useRef } from "react";
+import { Form } from "./components/Form";
 
 function HeartIcon() {
   return <span>❤️</span>;
@@ -12,10 +13,20 @@ function HeartIcon() {
 export const App = () => {
   const input = useRef<HTMLInputElement>(null);
 
+  const handleSave = (data: unknown) => {
+    const extractedData = data as { name: string; age: string };
+    console.log(extractedData);
+  };
+
   return (
     <main>
-      {/* <Input id="name" label="Your name" type="text" />
-      <Input id="age" label="Your age" type="number" /> */}
+      <Form onSave={handleSave}>
+        <Input id="name" label="Your name" type="text" />
+        <Input id="age" label="Your age" type="number" />
+        <p>
+          <Button el="button">Save</Button>
+        </p>
+      </Form>
 
       <Input id="name" label="Your name" type="text" ref={input} />
 

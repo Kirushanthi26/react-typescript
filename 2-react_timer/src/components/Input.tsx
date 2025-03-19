@@ -10,7 +10,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     return (
       <>
         <label htmlFor={id}>{label}</label>
-        <input id={id} {...props} ref={ref} />
+        <input id={id} name={id} {...props} ref={ref} />
       </>
     );
   }
