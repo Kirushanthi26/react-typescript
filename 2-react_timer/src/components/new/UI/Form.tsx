@@ -4,13 +4,13 @@ import {
   useRef,
   useImperativeHandle,
   forwardRef,
-} from 'react';
+} from "react";
 
 export type FormHandle = {
   clear: () => void;
 };
 
-type FormProps = ComponentPropsWithoutRef<'form'> & {
+type FormProps = ComponentPropsWithoutRef<"form"> & {
   onSave: (value: unknown) => void;
 };
 
@@ -20,10 +20,11 @@ const Form = forwardRef<FormHandle, FormProps>(function Form(
 ) {
   const form = useRef<HTMLFormElement>(null);
 
+  // It allows the parent component to call specific functions inside the child component.
   useImperativeHandle(ref, () => {
     return {
       clear() {
-        console.log('CLEARING');
+        console.log("CLEARING");
         form.current?.reset();
       },
     };
